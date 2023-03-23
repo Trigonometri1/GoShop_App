@@ -9,7 +9,7 @@ const ProductScreen = () => {
   const product = products.find((p) => p._id === params.id);
   console.log(product.name);
 
-  return <div>ProductScreen{product.name}</div>;
+  return <div>{product.name}</div>;
 };
 
 export default ProductScreen;
