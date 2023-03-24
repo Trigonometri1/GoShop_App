@@ -1,0 +1,14 @@
+{
+  "name": "react_shoping_app",
+  "version": "1.0.0",
+  "description": "Go Shop e-commerce application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "author": "Taha Berkay Basaran",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
