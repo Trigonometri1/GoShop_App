@@ -4,7 +4,7 @@ const products = require("./data/products");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("///API is runnig perfectly///");
+  res.send("///API is runnig perfectly///...");
 });
 
 app.get("/api/products", (req, res) => {
