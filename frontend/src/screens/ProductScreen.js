@@ -23,6 +23,7 @@ const ProductScreen = ({ color }) => {
       const { data } = await axios.get(`/api/products/${params.id}`);
 
       setProduct(data);
+      console.log(data);
     };
     fetchData();
   });
