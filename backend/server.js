@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import colors from "colors";
 import connectDB from "./config/db.js";
+import { errorNotFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 import productRoutes from "./routes/productRoutes.js";
 
@@ -21,14 +22,8 @@ app.get("/", (req, res) => {
 
 //* Middleware
 app.use("/api/products", productRoutes); //! link to router to get all products when response was sended "/api/products"
-app.use((err, req, res, next) => {
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
-  res.status(statusCode);
-  res.json({
-    message: err.message,
-    stack: process.env.WORKING_ENV_MODE === "production" ? null : err.stack,
-  });
-});
+app.use(errorNotFound);
+app.use(errorHandler);
 const PORT = process.env.API_PORT || 5000;
 
 app.listen(
