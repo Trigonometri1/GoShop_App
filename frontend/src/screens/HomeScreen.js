@@ -8,21 +8,30 @@ import listProducts from "../actions/productAction";
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
+
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
 
-  const products = [];
+  // const products = [];
   return (
     <>
-      <Row>
-        <h2>Products</h2>
-        {products.map((product) => (
-          <Col key={product._id} sm={12} md={6} lg={3} lx={2}>
-            <Product product={product} />
-          </Col>
-        ))}
-      </Row>
+      <h2>Products</h2>
+      {loading ? (
+        <h2>Loading...</h2>
+      ) : error ? (
+        <h2>{error}</h2>
+      ) : (
+        <Row>
+          {products.map((product) => (
+            <Col key={product._id} sm={12} md={6} lg={3} lx={2}>
+              <Product product={product} />
+            </Col>
+          ))}
+        </Row>
+      )}
     </>
   );
 };
